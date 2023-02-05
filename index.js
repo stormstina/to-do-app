@@ -6,6 +6,15 @@ const toDoList = document.getElementById("toDoContainer");
 
 const inputField = document.getElementById("inputField");  
 
+
+// Om todoArray existerar i local - Hämta datan
+// Om todoArray ej existerar i local - Skapa tom array
+let todoArray = localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")) : [] ;
+
+console.log(localStorage.getItem("todos"));
+console.log(JSON.parse(localStorage.getItem("todos")));
+console.log(todoArray);
+
 function makeTodo(text) {
 
     return toDoList.innerHTML +=  `<li>${text}</li>`;
