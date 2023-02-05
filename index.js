@@ -32,19 +32,35 @@ function makeTodo(input) {
         </div>
     </div>
     `;
+    deleteTodo()
+    
 };
+
+function deleteTodo() {
+    let allDeleteBtns = document.querySelectorAll(".delete-btn");
+    console.log(allDeleteBtns);
+    allDeleteBtns.forEach((btn, i) => {
+        btn.addEventListener("click", () => {
+            deleteItem(i);
+        })
+    })
+}
+
+function deleteItem(i) {
+    todoArray.splice(i, 1);
+    localStorage.setItem("todos", JSON.stringify(todoArray));
+    location.reload();
+}
 
 function storeTodo(input) {
     // Pusha in nya input-värdet i arr
     todoArray.push(input);
     // Lagrar todoArr i Local Storage --> sträng-format
     localStorage.setItem("todos", JSON.stringify(todoArray));
-    
+
     console.log(todoArray);
 
-    makeTodo(input)
-
-   
+    makeTodo(input);
 
 };
 
