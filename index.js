@@ -17,6 +17,7 @@ console.log(localStorage.getItem("todos"));
 console.log(JSON.parse(localStorage.getItem("todos")));
 console.log(todoArray);
 
+// Renderar alla ev. Local Storage todos
 todoArray.forEach(makeTodo);
 
 
@@ -27,7 +28,9 @@ function makeTodo(text) {
 };
 
 function storeTodo(text) {
+    // Pusha in nya input-värdet i arr
     todoArray.push(text);
+    // Lagrar todoArr i Local Storage --> sträng-format
     localStorage.setItem("todos", JSON.stringify(todoArray));
 };
 
@@ -50,6 +53,7 @@ addToDoButton.addEventListener("click", () => {
     makeTodo(inputField.value)
     storeTodo(inputField.value)
 
+    // Tömmer input-fält
     inputField.value = "";
 
 })
