@@ -21,17 +21,31 @@ console.log(todoArray);
 todoArray.forEach(makeTodo);
 
 
-function makeTodo(text) {
-
-    return toDoList.innerHTML +=  `<li>${text}</li>`;
-
+function makeTodo(input) {
+    toDoList.innerHTML += `
+    <div class="columns todo-item">
+        <div class="column">
+            <li>${input}</li>
+        </div>
+        <div class="controller column">
+            <button class="button delete-btn">x</button>            
+        </div>
+    </div>
+    `;
 };
 
-function storeTodo(text) {
+function storeTodo(input) {
     // Pusha in nya input-värdet i arr
-    todoArray.push(text);
+    todoArray.push(input);
     // Lagrar todoArr i Local Storage --> sträng-format
     localStorage.setItem("todos", JSON.stringify(todoArray));
+    
+    console.log(todoArray);
+
+    makeTodo(input)
+
+   
+
 };
 
 function displayDate () {
@@ -48,9 +62,10 @@ function displayDate () {
 
 window.onload = displayDate();
 
+
+
 addToDoButton.addEventListener("click", () => {
 
-    makeTodo(inputField.value)
     storeTodo(inputField.value)
 
     // Tömmer input-fält
@@ -60,6 +75,7 @@ addToDoButton.addEventListener("click", () => {
 
 clearBtn.addEventListener("click", () => {
     toDoList.innerHTML = "";
-    localStorage.clear();
+    localStorage.removeItem("todos");
+    todoArray = [];
 })
 
