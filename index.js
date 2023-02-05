@@ -20,10 +20,12 @@ console.log(todoArray);
 // Renderar alla ev. Local Storage todos
 todoArray.forEach(makeTodo);
 
-
 function makeTodo(input) {
     toDoList.innerHTML += `
     <div class="columns todo-item">
+        <div class="column">
+            <input type="checkbox" name="to-do" />
+        </div>
         <div class="column">
             <li>${input}</li>
         </div>
