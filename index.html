@@ -10,14 +10,27 @@
 </head>
 <body>
 
-    <h1 class="headin is-size-1 has-text-weight-bold" >Check it - Forget it</h1>
-    <input class="input" id="inputField" type="text" name="" value="">
-    <button class="button" id="addToDo">+</button>
-    <button class="button" id="clearBtn">Clear all</button>
+    <main>
+        <h1 class="headin is-size-1 has-text-weight-bold" >Check it - Forget it</h1>
 
-    <ul id="toDoContainer">
+        <div class="columns">
+            <div class="column is-four-fifths">
+                <input class="input" id="inputField" type="text" name="" value="" placeholder="Add to-do"/>
+            </div>
+            <div class="column">
+                <button class="button is-link" id="addToDo">+</button>
+            </div>
+            <div class="column">
+                <button class="button is-link is-light" id="clearBtn">Clear all</button>
+            </div>
+        </div>
+
+        <ul id="toDoContainer">
         
-    </ul>
+        </ul>
+
+    </main>
+
 
     
 </body>
