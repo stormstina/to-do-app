@@ -21,8 +21,16 @@ function makeTodo(text) {
 
 };
 
+function storeTodo(text) {
+    todoArray.push(text);
+    localStorage.setItem("todos", JSON.stringify(todoArray));
+};
+
 addToDoButton.addEventListener("click", () => {
 
     makeTodo(inputField.value)
+    storeTodo(inputField.value)
+
+    inputField.value = "";
 
 })
