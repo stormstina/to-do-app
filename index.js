@@ -39,5 +39,6 @@ addToDoButton.addEventListener("click", () => {
 })
 
 clearBtn.addEventListener("click", () => {
+    toDoList.innerHTML = "";
     localStorage.clear();
 })
