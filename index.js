@@ -15,6 +15,9 @@ console.log(localStorage.getItem("todos"));
 console.log(JSON.parse(localStorage.getItem("todos")));
 console.log(todoArray);
 
+todoArray.forEach(makeTodo);
+
+
 function makeTodo(text) {
 
     return toDoList.innerHTML +=  `<li>${text}</li>`;
@@ -33,4 +36,8 @@ addToDoButton.addEventListener("click", () => {
 
     inputField.value = "";
 
+})
+
+clearBtn.addEventListener("click", () => {
+    localStorage.clear();
 })
