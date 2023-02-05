@@ -8,7 +8,6 @@ const inputField = document.getElementById("inputField");
 
 const dateSpan = document.querySelector("#date");
 
-
 // Om todoArray existerar i local - Hämta datan
 // Om todoArray ej existerar i local - Skapa tom array
 let todoArray = localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")) : [] ;
@@ -43,15 +42,11 @@ function deleteTodo() {
     console.log(allDeleteBtns);
     allDeleteBtns.forEach((btn, i) => {
         btn.addEventListener("click", () => {
-            deleteItem(i);
+            todoArray.splice(i, 1);
+            localStorage.setItem("todos", JSON.stringify(todoArray));
+            location.reload();
         })
     })
-}
-
-function deleteItem(i) {
-    todoArray.splice(i, 1);
-    localStorage.setItem("todos", JSON.stringify(todoArray));
-    location.reload();
 }
 
 function storeTodo(input) {
