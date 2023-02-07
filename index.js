@@ -2,6 +2,8 @@ const addToDoButton = document.getElementById("addToDo");
 
 const clearBtn = document.querySelector("#clearBtn");
 
+
+
 const toDoList = document.getElementById("toDoContainer");   
 
 const inputField = document.getElementById("inputField");  
@@ -25,16 +27,17 @@ function makeTodo(input) {
         <div class="column">
             <input type="checkbox" name="to-do" />
         </div>
-        <div class="column">
+        <div class="column edit-container">
             <textarea class="textarea" disabled>${input}</textarea>
         </div>
-        <div class="column">
+        <div class="column ">
             <button class="button delete-btn"><i class="fa-solid fa-trash"></i></button>
-            <button class="button"><i class="fa-solid fa-pen-to-square"></i></button>            
+            <button class="button edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>            
         </div>
     </div>
     `;
     deleteTodo()
+    editTodo()
     
 };
 
@@ -52,6 +55,26 @@ function deleteTodo() {
         })
     })
 }
+
+function editTodo() {
+
+    let allEditBtns = document.querySelectorAll(".edit-btn");
+    console.log(allEditBtns);
+
+    let allEditInputs = document.querySelectorAll(".edit-container textarea");
+    console.log(allEditInputs);
+
+    allEditBtns.forEach((btn, index) => {
+        btn.addEventListener("click", () => {
+
+            allEditInputs[index].toggleAttribute("disabled");
+
+        })
+    })
+
+}
+
+
 
 function storeTodo(input) {
     // Pusha in nya input-värdet i todoArr
@@ -97,3 +120,4 @@ clearBtn.addEventListener("click", () => {
     todoArray = [];
 })
 
+console.log(todoArray);
