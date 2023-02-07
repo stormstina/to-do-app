@@ -29,7 +29,7 @@ function makeTodo(input) {
             <textarea class="textarea" disabled>${input}</textarea>
             <div class="column edit-buttons">
                 <button class="button save-btn"><i class="fa-solid fa-floppy-disk"></i></button>
-                <button class="button" cancel-btn><i class="fa-solid fa-ban"></i></i></button>
+                <button class="button cancel-btn"><i class="fa-solid fa-ban"></i></i></button>
             </div>
         </div>
         <div class="column ">
@@ -41,8 +41,7 @@ function makeTodo(input) {
     deleteTodo();
     editTodo();
     saveEdits();
-
-    
+    cancelEdit();
 };
 
 function deleteTodo() {
@@ -63,13 +62,8 @@ function deleteTodo() {
 function editTodo() {
 
     let allEditBtns = document.querySelectorAll(".edit-btn");
-    console.log(allEditBtns);
-
     let allEditInputs = document.querySelectorAll(".edit-container textarea");
-    console.log(allEditInputs);
-
     let allEditControllers = document.querySelectorAll(".edit-buttons");
-    console.log(allEditControllers);
 
     allEditBtns.forEach((btn, index) => {
         btn.addEventListener("click", () => {
@@ -86,9 +80,7 @@ function editTodo() {
 
 function saveEdits() {
     let allSaveBtns  = document.querySelectorAll(".save-btn");
-
     let allEditInputs = document.querySelectorAll(".edit-container textarea");
-
     let allEditControllers = document.querySelectorAll(".edit-buttons");
 
     allSaveBtns.forEach((btn, index) => {
@@ -103,13 +95,25 @@ function saveEdits() {
             allEditControllers[index].style.display = "none";
             
         });
-        
-        
     });
-    
 };
 
+function cancelEdit() {
 
+    let allCancelBtns = document.querySelectorAll(".cancel-btn");
+    let allEditInputs = document.querySelectorAll(".edit-container textarea");
+    let allEditControllers = document.querySelectorAll(".edit-buttons");
+
+    allCancelBtns.forEach((btn, index) => {
+        btn.addEventListener("click", () => {
+
+            allEditInputs[index].disabled = true;
+            allEditInputs[index].value = todoArray[index];
+            allEditControllers[index].style.display = "none";
+
+        });
+    });
+};
 
 function storeTodo(input) {
     // Pusha in nya input-värdet i todoArr
@@ -134,7 +138,7 @@ function displayDate () {
     dateSpan.innerHTML = date[1] + " " + date[2] + " " + date [3];
     // console.log(dateSpan);
 
-}
+};
 
 window.onload = displayDate();
 
@@ -145,12 +149,12 @@ addToDoButton.addEventListener("click", () => {
     // Tömmer input-fält
     inputField.value = "";
 
-})
+});
 
 clearBtn.addEventListener("click", () => {
     toDoList.innerHTML = "";
     localStorage.removeItem("todos");
     todoArray = [];
-})
+});
 
 console.log(todoArray);
