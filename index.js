@@ -29,6 +29,10 @@ function makeTodo(input) {
         </div>
         <div class="column edit-container">
             <textarea class="textarea" disabled>${input}</textarea>
+            <div class="column edit-buttons">
+                <button class="button"><i class="fa-solid fa-floppy-disk"></i></button>
+                <button class="button"><i class="fa-solid fa-ban"></i></i></button>
+            </div>
         </div>
         <div class="column ">
             <button class="button delete-btn"><i class="fa-solid fa-trash"></i></button>
@@ -68,6 +72,7 @@ function editTodo() {
         btn.addEventListener("click", () => {
 
             allEditInputs[index].toggleAttribute("disabled");
+            console.log(allEditInputs[index].value);
 
         })
     })
