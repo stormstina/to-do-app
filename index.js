@@ -2,8 +2,6 @@ const addToDoButton = document.getElementById("addToDo");
 
 const clearBtn = document.querySelector("#clearBtn");
 
-
-
 const toDoList = document.getElementById("toDoContainer");   
 
 const inputField = document.getElementById("inputField");  
@@ -40,8 +38,10 @@ function makeTodo(input) {
         </div>
     </div>
     `;
-    deleteTodo()
-    editTodo()
+    deleteTodo();
+    editTodo();
+    saveEdits();
+
     
 };
 
@@ -77,12 +77,37 @@ function editTodo() {
             allEditInputs[index].disabled = false;
             console.log(allEditInputs[index].value);
 
-            allEditControllers[index].style.display = "block"
+            allEditControllers[index].style.display = "block";
 
         })
     })
 
 }
+
+function saveEdits() {
+    let allSaveBtns  = document.querySelectorAll(".save-btn");
+
+    let allEditInputs = document.querySelectorAll(".edit-container textarea");
+
+    let allEditControllers = document.querySelectorAll(".edit-buttons");
+
+    allSaveBtns.forEach((btn, index) => {
+        btn.addEventListener("click", () => {
+            // console.log(allEditInputs[index].value);
+
+            todoArray.splice(index, 1, allEditInputs[index].value);
+
+            localStorage.setItem("todos", JSON.stringify(todoArray));
+
+            allEditInputs[index].disabled = true;
+            allEditControllers[index].style.display = "none";
+            
+        });
+        
+        
+    });
+    
+};
 
 
 
@@ -112,8 +137,6 @@ function displayDate () {
 }
 
 window.onload = displayDate();
-
-
 
 addToDoButton.addEventListener("click", () => {
 
