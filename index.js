@@ -26,10 +26,11 @@ function makeTodo(input) {
             <input type="checkbox" name="to-do" />
         </div>
         <div class="column">
-            <li>${input}</li>
+            <textarea class="textarea" disabled>${input}</textarea>
         </div>
-        <div class="controller column">
-            <button class="button delete-btn">x</button>            
+        <div class="column">
+            <button class="button delete-btn"><i class="fa-solid fa-trash"></i></button>
+            <button class="button"><i class="fa-solid fa-pen-to-square"></i></button>            
         </div>
     </div>
     `;
@@ -40,10 +41,10 @@ function makeTodo(input) {
 function deleteTodo() {
     let allDeleteBtns = document.querySelectorAll(".delete-btn");
 
-    allDeleteBtns.forEach((btn, i) => {
+    allDeleteBtns.forEach((btn, index) => {
 
         btn.addEventListener("click", () => {
-            todoArray.splice(i, 1);
+            todoArray.splice(index, 1);
 
             localStorage.setItem("todos", JSON.stringify(todoArray));
 
