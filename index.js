@@ -154,10 +154,18 @@ addToDoButton.addEventListener("click", () => {
 
     storeTodo(inputField.value)
 
-    // Tömmer input-fält
+    // Tömmer input-fält 
     inputField.value = "";
 
 });
+
+// Enter i input-fält fungerar som submit för addTodo
+inputField.addEventListener("keyup", (e) => {
+    if (e.key == "Enter") {
+        addToDoButton.click();
+    }
+});
+
 
 clearBtn.addEventListener("click", () => {
     toDoList.innerHTML = "";
@@ -167,6 +175,6 @@ clearBtn.addEventListener("click", () => {
 
 console.log(todoArray);
 
-const toggleDisplay = element => element.style.display = element.style.display === "block" ? "none" : "block";
+const toggleDisplay = element => element.style.display = element.style.display === "block" ? "none" : "block" ;
 
-const toggleDisabled = element => element.disabled = element.disabled === true ? false : true;
+const toggleDisabled = element => element.disabled = element.disabled === true ? false : true ;
