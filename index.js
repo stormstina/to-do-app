@@ -39,37 +39,41 @@ function makeTodo(input) {
 
 function deleteTodo() {
     let allDeleteBtns = document.querySelectorAll(".delete-btn");
-    console.log(allDeleteBtns);
+
     allDeleteBtns.forEach((btn, i) => {
+
         btn.addEventListener("click", () => {
             todoArray.splice(i, 1);
+
             localStorage.setItem("todos", JSON.stringify(todoArray));
+
             location.reload();
         })
     })
 }
 
 function storeTodo(input) {
-    // Pusha in nya input-värdet i arr
+    // Pusha in nya input-värdet i todoArr
     todoArray.push(input);
     // Lagrar todoArr i Local Storage --> sträng-format
     localStorage.setItem("todos", JSON.stringify(todoArray));
 
     console.log(todoArray);
 
+    //Skickar todo-input till
     makeTodo(input);
 
 };
 
 function displayDate () {
     let date = new Date();
-    console.log(date);
+    // console.log(date);
 
     date = date.toString().split(" ");
-    console.log(date);
+    // console.log(date);
 
     dateSpan.innerHTML = date[1] + " " + date[2] + " " + date [3];
-    console.log(dateSpan);
+    // console.log(dateSpan);
 
 }
 

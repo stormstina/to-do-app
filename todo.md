@@ -4,6 +4,7 @@
 
 * Stryka en todo
     * checkbox
+        * om checkad --> hamna längst ner
     * genomstruket streck
 
 * Translata datum
