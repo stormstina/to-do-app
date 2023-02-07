@@ -44,6 +44,8 @@ function makeTodo(input) {
     cancelEdit();
 };
 
+
+
 function deleteTodo() {
     let allDeleteBtns = document.querySelectorAll(".delete-btn");
 
@@ -68,14 +70,20 @@ function editTodo() {
     allEditBtns.forEach((btn, index) => {
         btn.addEventListener("click", () => {
 
-            allEditInputs[index].disabled = false;
+            toggleDisplay(allEditControllers[index]);
+            toggleDisabled(allEditInputs[index]);
+
             console.log(allEditInputs[index].value);
 
-            allEditControllers[index].style.display = "block";
+            if(allEditInputs[index].disabled) {
+                btn.addEventListener("click", () => {
+                    allEditInputs[index].value = todoArray[index];
+
+                })
+            }
 
         })
     })
-
 }
 
 function saveEdits() {
@@ -91,8 +99,8 @@ function saveEdits() {
 
             localStorage.setItem("todos", JSON.stringify(todoArray));
 
-            allEditInputs[index].disabled = true;
-            allEditControllers[index].style.display = "none";
+            toggleDisabled(allEditInputs[index])
+            toggleDisplay(allEditControllers[index]);
             
         });
     });
@@ -107,9 +115,9 @@ function cancelEdit() {
     allCancelBtns.forEach((btn, index) => {
         btn.addEventListener("click", () => {
 
-            allEditInputs[index].disabled = true;
+            toggleDisplay(allEditControllers[index])
+            toggleDisabled(allEditInputs[index])
             allEditInputs[index].value = todoArray[index];
-            allEditControllers[index].style.display = "none";
 
         });
     });
@@ -158,3 +166,7 @@ clearBtn.addEventListener("click", () => {
 });
 
 console.log(todoArray);
+
+const toggleDisplay = element => element.style.display = element.style.display === "block" ? "none" : "block";
+
+const toggleDisabled = element => element.disabled = element.disabled === true ? false : true;
